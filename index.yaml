@@ -1,0 +1,46 @@
+apiVersion: v1
+entries:
+  trustify:
+  - apiVersion: v2
+    appVersion: 0.1.0-alpha.23
+    created: "2024-11-18T13:33:41.765960168Z"
+    description: A Helm chart for managing Trustify services on Kubernetes
+    digest: 1d38d3643fd00c6d541e586ea3ce430f957061cfd474f6b5c9ea70a521dfde1d
+    home: https://trustification.io
+    icon: https://raw.githubusercontent.com/trustification/trustification/main/docs/branding/svg/trustification_icon_default.svg
+    kubeVersion: ^1.29.0
+    maintainers:
+    - email: jreimann@redhat.com
+      name: ctron
+    name: trustify
+    type: application
+    urls:
+    - https://github.com/trustification/trustify-helm-charts/releases/download/trustify-0.1.0-alpha.23/trustify-0.1.0-alpha.23.tgz
+    version: 0.1.0-alpha.23
+  trustify-infrastructure:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-11-18T13:33:41.937067257Z"
+    dependencies:
+    - condition: keycloak.enabled
+      name: keycloak
+      repository: https://charts.bitnami.com/bitnami
+      version: 22.0.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.0.0
+    description: A Helm chart for setting up self-hosted infrastructure components
+      for using Trustify
+    digest: 75876a895b578c78779eb4586feaec7c9f5292c425be4bed6b4a20dfe3769645
+    home: https://trustification.io
+    icon: https://raw.githubusercontent.com/trustification/trustification/main/docs/branding/svg/trustification_icon_default.svg
+    maintainers:
+    - email: jreimann@redhat.com
+      name: ctron
+    name: trustify-infrastructure
+    type: application
+    urls:
+    - https://github.com/trustification/trustify-helm-charts/releases/download/trustify-infrastructure-0.1.0/trustify-infrastructure-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-11-18T13:33:41.937077686Z"
