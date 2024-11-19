@@ -222,7 +222,7 @@ spec:
               if [[ -n "$ID" || "$ID" == "[]" ]]; then
                 kcadm update "users/$ID" -r "${REALM}" -s enabled=true
               else
-                kcadm create users -r "${REALM}" -s "username=${CHICKEN_ADMIN}" -s enabled=true
+                kcadm create users -r "${REALM}" -s "username=${CHICKEN_ADMIN}" -s enabled=true -s email=test@example.com -s emailVerified=true -s firstName=Admin -s lastName=Admin
               fi
 
               # set role
