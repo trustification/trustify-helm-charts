@@ -153,6 +153,12 @@ properties:
           - $ref: "#/definitions/Tracing"
           - $ref: "#/definitions/HttpApplication"
           - $ref: "#/definitions/Postgres"
+          - type: object
+            properties:
+              analyticsWriteKey:
+                type: string
+              uploadLimit:
+                $ref: "#/definitions/ByteSize"
 
       createDatabase:
         description: |
@@ -553,7 +559,9 @@ definitions:
           - size
         properties:
           size:
-            $ref: "#/definitions/ByteSize"
+            $ref: "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+          storageClassName:
+            type: string
 
   S3StorageConfig:
     type: object
@@ -659,4 +667,3 @@ definitions:
         $ref: "#/definitions/ByteSize"
       jsonLimit:
         $ref: "#/definitions/ByteSize"
-

@@ -90,6 +90,11 @@
         "port": {
           "type": "integer",
           "description": "Port on which infrastructure services are exposed.\n"
+        },
+        "initialDelaySeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The initial delay seconds for the infrastructure probes.\n"
         }
       }
     },
@@ -167,6 +172,17 @@
             },
             {
               "$ref": "#/definitions/Postgres"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "analyticsWriteKey": {
+                  "type": "string"
+                },
+                "uploadLimit": {
+                  "$ref": "#/definitions/ByteSize"
+                }
+              }
             }
           ]
         },
@@ -701,7 +717,10 @@
           ],
           "properties": {
             "size": {
-              "$ref": "#/definitions/ByteSize"
+              "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+            },
+            "storageClassName": {
+              "type": "string"
             }
           }
         }

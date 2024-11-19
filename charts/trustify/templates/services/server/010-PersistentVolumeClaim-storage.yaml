@@ -1,0 +1,25 @@
+{{- if and .Values.modules.server.enabled }}
+{{- $res := dict "root" . "name" "storage" -}}
+
+{{- if .Values.storage }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "trustification.common.name" $res }}
+  labels:
+    {{- include "trustification.common.labels" $res | nindent 4 }}
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ include "trustification.common.byteSizeValue" .Values.storage.filesystem.size }}
+
+{{- with .Values.storage.filesystem.storageClassName }}
+  storageClassName: {{ . | quote }}
+{{- end }}
+
+{{- end }}
+
+{{- end }}

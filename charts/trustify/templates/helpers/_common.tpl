@@ -32,5 +32,5 @@ Byte-size as a string value.
 Arguments: int or string
 */}}
 {{- define "trustification.common.byteSizeValue" }}
-{{ . | quote }}
+{{- . | quote }}
 {{- end }}
