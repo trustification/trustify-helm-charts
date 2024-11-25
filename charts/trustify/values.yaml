@@ -27,8 +27,8 @@ oidc:
   clients:
     frontend:
       clientId: frontend
-    walker:
-      clientId: walker
+    cli:
+      clientId: cli
       clientSecret:
 
 serviceMonitor:
