@@ -8,7 +8,11 @@ authenticator:
 
 storage:
   type: s3
-  region: <region> # <2>
+  region:
+    valueFrom:
+      configMapKeyRef:
+        name: aws-storage
+        key: region
   bucket: trustify-jreimann
   accessKey:
     valueFrom:
@@ -84,12 +88,24 @@ modules:
     enabled: true
 
 oidc:
-  issuerUrl: <issuer-url> # <4>
+  issuerUrl:
+    valueFrom:
+      configMapKeyRef:
+        name: aws-oidc
+        key: issuer-url
   clients:
     frontend:
-      clientId: <client-id> # <5>
+      clientId:
+        valueFrom:
+          secretKeyRef:
+            name: oidc-frontend
+            key: client-id
     cli:
-      clientId: <client-id> # <6>
+      clientId:
+        valueFrom:
+          secretKeyRef:
+            name: oidc-cli
+            key: client-id
       clientSecret:
         valueFrom:
           secretKeyRef:

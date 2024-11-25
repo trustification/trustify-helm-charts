@@ -17,7 +17,11 @@ Arguments: (dict)
 */}}
 {{- define "trustification.oidc.clientId" }}
 {{- $client := get .root.Values.oidc.clients .clientId -}}
+{{- if kindIs "map" $client.clientId }}
+{{- include "_trustify.valueFrom" (dict "root" .root "valueFrom" $client.clientId.valueFrom ) }}
+{{- else }}
 {{- $client.clientId | default .clientId }}
+{{- end }}
 {{- end }}
 
 {{/*
@@ -60,8 +64,12 @@ Arguments (dict):
   * client - client object
 */}}
 {{- define "trustification.oidc.issuerUrl" }}
-{{- if .client.issuerUrl }}
+{{- if kindIs "map" .client.issuerUrl }}
+{{- include "_trustify.valueFrom" (dict "root" .root "valueFrom" .client.issuerUrl.valueFrom ) }}
+{{- else if .client.issuerUrl }}
 {{- .client.issuerUrl }}
+{{- else if kindIs "map" .root.Values.oidc.issuerUrl }}
+{{- include "_trustify.valueFrom" (dict "root" .root "valueFrom" .root.Values.oidc.issuerUrl.valueFrom ) }}
 {{- else if .root.Values.oidc.issuerUrl }}
 {{- .root.Values.oidc.issuerUrl }}
 {{- else -}}

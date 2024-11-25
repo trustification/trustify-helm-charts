@@ -14,9 +14,7 @@ ingress: {}
 
 tls: {}
 
-storage:
-  type: filesystem
-  size: 32Gi
+storage: {}
 
 database: {}
 
@@ -25,10 +23,8 @@ openshift:
 
 oidc:
   clients:
-    frontend:
-      clientId: frontend
+    frontend: {}
     cli:
-      clientId: cli
       clientSecret:
 
 serviceMonitor:

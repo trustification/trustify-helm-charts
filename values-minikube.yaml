@@ -2,6 +2,10 @@ appDomain: change-me
 
 tracing: { }
 
+storage:
+  type: filesystem
+  size: 32Gi
+
 database:
   host: infrastructure-postgresql
   port: "5432"

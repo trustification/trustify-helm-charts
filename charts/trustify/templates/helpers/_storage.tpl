@@ -18,12 +18,12 @@ Arguments (dict):
 
 {{- include "_trustification.storage.common.envVars" ( set (deepCopy .) "storage" .storage ) }}
 
-{{- if .storage.filesystem }}
-{{- include "_trustification.storage.filesystem.envVars" ( set (deepCopy .) "storage" .storage.filesystem ) }}
-{{- else if .storage.s3 }}
-{{- include "_trustification.storage.s3.envVars" ( set (deepCopy .) "storage" .storage.s3 ) }}
+{{- if eq .storage.type "filesystem" }}
+{{- include "_trustification.storage.filesystem.envVars" . }}
+{{- else if eq .storage.type "s3" }}
+{{- include "_trustification.storage.s3.envVars" . }}
 {{- else }}
-{{- fail "Storage must either be set to .filesystem or .s3" }}
+{{- fail ".storage.type must either be set to 'filesystem' or 's3'" }}
 {{- end }}
 {{- end }}
 
@@ -62,7 +62,7 @@ Arguments (dict):
   value: "eu-west-1" # just a dummy value
 {{ else }}
 - name: TRUSTD_S3_REGION
-  value: "{{ .storage.region }}"
+  {{- include "trustification.common.envVarValue" .storage.region | nindent 2 }}
 {{ end }}
 
 - name: TRUSTD_S3_BUCKET

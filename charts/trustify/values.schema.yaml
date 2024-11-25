@@ -401,10 +401,7 @@ definitions:
     additionalProperties: false
     properties:
       issuerUrl:
-        type: string
-        format: uri
-        description: |
-          The URL to the issuer.
+        $ref: "#/definitions/ValueOrRef"
 
       insecure:
         type: boolean
@@ -436,7 +433,7 @@ definitions:
     type: object
     properties:
       clientId:
-        type: string
+        $ref: "#/definitions/ValueOrRef"
       issuerUrl:
         type: string
         format: uri
@@ -573,6 +570,10 @@ definitions:
       - bucket
     additionalProperties: false
     properties:
+      type:
+        type: string
+        enum:
+          - s3
       accessKey:
         description: |
           The access key/username to the storage resource
@@ -591,7 +592,7 @@ definitions:
           - region
         properties:
           region:
-            type: string
+            $ref: "#/definitions/ValueOrRef"
       - type: object
         required:
           - endpoint

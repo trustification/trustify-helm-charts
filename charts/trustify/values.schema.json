@@ -502,9 +502,7 @@
       "additionalProperties": false,
       "properties": {
         "issuerUrl": {
-          "type": "string",
-          "format": "uri",
-          "description": "The URL to the issuer.\n"
+          "$ref": "#/definitions/ValueOrRef"
         },
         "insecure": {
           "type": "boolean",
@@ -537,7 +535,7 @@
       "type": "object",
       "properties": {
         "clientId": {
-          "type": "string"
+          "$ref": "#/definitions/ValueOrRef"
         },
         "issuerUrl": {
           "type": "string",
@@ -732,6 +730,12 @@
       ],
       "additionalProperties": false,
       "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "s3"
+          ]
+        },
         "accessKey": {
           "description": "The access key/username to the storage resource\n",
           "$ref": "#/definitions/ValueOrRef"
@@ -754,7 +758,7 @@
           ],
           "properties": {
             "region": {
-              "type": "string"
+              "$ref": "#/definitions/ValueOrRef"
             }
           }
         },
