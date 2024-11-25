@@ -14,7 +14,9 @@ ingress: {}
 
 tls: {}
 
-storage: {}
+storage:
+  type: filesystem
+  size: 32Gi
 
 database: {}
 

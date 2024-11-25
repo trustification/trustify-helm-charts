@@ -688,6 +688,7 @@
       }
     },
     "StorageConfig": {
+      "description": "Configuration for the storage.\n",
       "oneOf": [
         {
           "$ref": "#/definitions/FileSystemStorageConfig"
@@ -698,86 +699,78 @@
       ]
     },
     "FileSystemStorageConfig": {
+      "description": "Configure a filesystem storage.\n",
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "filesystem"
+        "type",
+        "size"
       ],
       "properties": {
-        "filesystem": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "size"
-          ],
-          "properties": {
-            "size": {
-              "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
-            },
-            "storageClassName": {
-              "type": "string"
-            }
-          }
+        "type": {
+          "type": "string",
+          "enum": [
+            "filesystem"
+          ]
+        },
+        "size": {
+          "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        },
+        "storageClassName": {
+          "type": "string"
         }
       }
     },
     "S3StorageConfig": {
+      "description": "Configure an S3 compatible object storage.\n",
       "type": "object",
       "required": [
-        "s3"
+        "type",
+        "accessKey",
+        "secretKey",
+        "bucket"
       ],
       "additionalProperties": false,
       "properties": {
-        "s3": {
+        "accessKey": {
+          "description": "The access key/username to the storage resource\n",
+          "$ref": "#/definitions/ValueOrRef"
+        },
+        "secretKey": {
+          "description": "The secret key/password to the storage resource\n",
+          "$ref": "#/definitions/ValueOrRef"
+        },
+        "bucket": {
+          "type": "string"
+        },
+        "region": true,
+        "endpoint": true
+      },
+      "oneOf": [
+        {
           "type": "object",
-          "additionalProperties": false,
           "required": [
-            "accessKey",
-            "secretKey",
-            "bucket"
+            "region"
           ],
           "properties": {
-            "accessKey": {
-              "description": "The access key/username to the storage resource\n",
-              "$ref": "#/definitions/ValueOrRef"
-            },
-            "secretKey": {
-              "description": "The secret key/password to the storage resource\n",
-              "$ref": "#/definitions/ValueOrRef"
-            },
-            "bucket": {
+            "region": {
               "type": "string"
-            },
-            "region": true,
-            "endpoint": true
-          },
-          "oneOf": [
-            {
-              "type": "object",
-              "required": [
-                "region"
-              ],
-              "properties": {
-                "region": {
-                  "type": "string"
-                }
-              }
-            },
-            {
-              "type": "object",
-              "required": [
-                "endpoint"
-              ],
-              "properties": {
-                "endpoint": {
-                  "type": "string",
-                  "format": "uri"
-                }
-              }
             }
-          ]
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "endpoint"
+          ],
+          "properties": {
+            "endpoint": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
         }
-      }
+      ]
     },
     "Postgres": {
       "type": "object",

@@ -3,10 +3,6 @@ appDomain: change-me
 ingress:
   className: openshift-default
 
-storage:
-  filesystem:
-    size: 32Gi
-
 database:
   host: infrastructure-postgresql
   port: "5432"

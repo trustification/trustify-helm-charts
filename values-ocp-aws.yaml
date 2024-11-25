@@ -7,19 +7,19 @@ authenticator:
   type: cognito
 
 storage:
-  s3:
-    region: <region> # <2>
-    bucket: trustify-jreimann
-    accessKey:
-      valueFrom:
-        secretKeyRef:
-          name: storage-credentials
-          key: aws_access_key_id
-    secretKey:
-      valueFrom:
-        secretKeyRef:
-          name: storage-credentials
-          key: aws_secret_access_key
+  type: s3
+  region: <region> # <2>
+  bucket: trustify-jreimann
+  accessKey:
+    valueFrom:
+      secretKeyRef:
+        name: storage-credentials
+        key: aws_access_key_id
+  secretKey:
+    valueFrom:
+      secretKeyRef:
+        name: storage-credentials
+        key: aws_secret_access_key
 
 database:
   host:
