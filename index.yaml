@@ -19,6 +19,22 @@ entries:
     version: 0.1.0-alpha.28
   - apiVersion: v2
     appVersion: 0.1.0-alpha.25
+    created: "2024-11-28T12:11:03.787168402Z"
+    description: A Helm chart for managing Trustify services on Kubernetes
+    digest: f105f953f773cae0b05a0aef9ec7254b1c1cf1c999e3d338d4636574ef2783bb
+    home: https://trustification.io
+    icon: https://raw.githubusercontent.com/trustification/trustification/main/docs/branding/svg/trustification_icon_default.svg
+    kubeVersion: ^1.29.0
+    maintainers:
+    - email: jreimann@redhat.com
+      name: ctron
+    name: trustify
+    type: application
+    urls:
+    - https://github.com/trustification/trustify-helm-charts/releases/download/trustify-0.1.0-alpha.28/trustify-0.1.0-alpha.28.tgz
+    version: 0.1.0-alpha.28
+  - apiVersion: v2
+    appVersion: 0.1.0-alpha.25
     created: "2024-11-25T13:54:33.990967236Z"
     description: A Helm chart for managing Trustify services on Kubernetes
     digest: 6ba652be55a5d7c9b23b3fcc4f874c3a047b40487f610c156eca8cf80d7569f8
@@ -139,4 +155,4 @@ entries:
     urls:
     - https://github.com/trustification/trustify-helm-charts/releases/download/trustify-infrastructure-0.1.0/trustify-infrastructure-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-27T09:28:13.325875764Z"
+generated: "2024-11-28T12:11:03.787222893Z"
