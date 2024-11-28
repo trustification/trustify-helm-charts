@@ -628,6 +628,16 @@ definitions:
         $ref: "#/definitions/ValueOrRef"
       sslMode:
         $ref: "#/definitions/PostgresSslMode"
+      minimumConnections:
+        description: |
+          The minimum number of connections created in the connection pool.
+        type: integer
+        minimum: 0
+      maximumConnections:
+        description: |
+          The maximum number of connections created in the connection pool.
+        type: integer
+        minimum: 1
 
   PostgresSslMode:
     type: string

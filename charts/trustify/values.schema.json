@@ -811,6 +811,16 @@
         },
         "sslMode": {
           "$ref": "#/definitions/PostgresSslMode"
+        },
+        "minimumConnections": {
+          "description": "The minimum number of connections created in the connection pool.\n",
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximumConnections": {
+          "description": "The maximum number of connections created in the connection pool.\n",
+          "type": "integer",
+          "minimum": 1
         }
       }
     },

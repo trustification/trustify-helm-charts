@@ -44,4 +44,14 @@ Arguments (dict):
   {{- include "trustification.common.requiredEnvVarValue" (dict "value" .database.password "msg" "Missing value for database password" ) | nindent 2 }}
 - name: {{ .prefix | default "TRUSTD_DB_" }}SSLMODE
   value: {{ .database.sslMode | default "allow" }}
+
+{{- with .database.minimumConnections }}
+- name: {{ .prefix | default "TRUSTD_DB_" }}MIN_CONN
+  value: {{ . | quote }}
+{{- end }}
+{{- with .database.maximumConnections }}
+- name: {{ .prefix | default "TRUSTD_DB_" }}MAX_CONN
+  value: {{ . | quote }}
+{{- end }}
+
 {{- end }}
