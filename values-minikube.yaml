@@ -1,6 +1,6 @@
 appDomain: change-me
 
-tracing: { }
+tracing: {}
 
 storage:
   type: filesystem
@@ -46,7 +46,7 @@ keycloak:
     adminPassword: admin123456 # notsecret
   tls:
     enabled: false
-  service: { }
+  service: {}
   ingress:
     enabled: true
     servicePort: http
@@ -56,7 +56,7 @@ postgresql:
 
 oidc:
   clients:
-    frontend: { }
+    frontend: {}
     cli:
       clientSecret:
         value: 5460cc91-4e20-4edd-881c-b15b169f8a79 # notsecret

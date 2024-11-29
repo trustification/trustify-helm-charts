@@ -27,5 +27,5 @@ Arguments (dict):
 {{ define "trustification.application.tracing.annotations" }}
 {{- if eq (include "trustification.application.tracing.enabled" . ) "true" }}
 sidecar.jaegertracing.io/inject: "true"
-{{ end }}
+{{end }}
 {{- end }}

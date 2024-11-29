@@ -7,5 +7,5 @@ Arguments (dict):
   * module - module object
 */}}
 {{ define "trustification.application.annotations" }}
-{{ include "trustification.application.tracing.annotations" . }}
+{{- include "trustification.application.tracing.annotations" . }}
 {{- end }}

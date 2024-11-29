@@ -7,6 +7,9 @@ required:
   - tracing
 
 properties:
+  "$schema":
+    type: string
+
   global:
     type: object
 
@@ -175,6 +178,22 @@ properties:
           - $ref: "#/definitions/Feature"
           - $ref: "#/definitions/Image"
           - $ref: "#/definitions/Application"
+
+      createImporters:
+        description: |
+          Job to create a set of pre-defined importers
+        allOf:
+          - $ref: "#/definitions/Feature"
+          - $ref: "#/definitions/Image"
+          - $ref: "#/definitions/Application"
+          - $ref: "#/definitions/Postgres"
+          - type: object
+            properties:
+              importers:
+                type: object
+                description: The importers to create
+                additionalProperties:
+                  $ref: "https://raw.githubusercontent.com/trustification/trustify/main/modules/importer/schema/importer.json"
 
   database:
     $ref: "#/definitions/PostgresConfig"
@@ -376,7 +395,7 @@ definitions:
           - content
         properties:
           content:
-            $ref: "https://raw.githubusercontent.com/trustification/trustification/main/auth/schema/auth.json"
+            $ref: "https://raw.githubusercontent.com/trustification/trustify/main/common/auth/schema/auth.json"
       - type: object
         additionalProperties: false
         required:

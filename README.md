@@ -128,3 +128,7 @@ And then, modify any of the previous `helm` commands to use:
 ```bash
 helm […] --devel trustify/<chart> […]
 ```
+
+## Initial set of importers
+
+You can create an initial set of importers by adding the values file `values-importers.yaml`.
