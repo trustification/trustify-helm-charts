@@ -163,6 +163,28 @@ properties:
               uploadLimit:
                 $ref: "#/definitions/ByteSize"
 
+      importer:
+        description: |
+          The main server process.
+        allOf:
+          - $ref: "#/definitions/Feature"
+          - $ref: "#/definitions/Image"
+          - $ref: "#/definitions/Application"
+          - $ref: "#/definitions/RustApplication"
+          - $ref: "#/definitions/Infrastructure"
+          - $ref: "#/definitions/Metrics"
+          - $ref: "#/definitions/Tracing"
+          - $ref: "#/definitions/Postgres"
+          - type: object
+            properties:
+              workingDirectory:
+                type: object
+                required:
+                  - size
+                properties:
+                  size:
+                    $ref: "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+
       createDatabase:
         description: |
           Job to create a database in a PostgreSQL instance

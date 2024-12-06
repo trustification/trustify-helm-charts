@@ -101,3 +101,23 @@ Arguments (dict):
     claimName: {{ include "trustification.common.name" ( set (deepCopy .) "name" "storage" ) }}
 {{- end }}
 {{- end }}
+
+{{/*
+Default pod affinity when using the filesystem storage.
+
+Arguments (dict):
+  * root - .
+  * module - module object
+*/}}
+{{- define "trustification.storage.defaultPodAffinity" }}
+{{ $storage := .module.storage | default .root.Values.storage }}
+{{- if eq $storage.type "filesystem" }}
+podAffinity:
+  requiredDuringSchedulingIgnoredDuringExecution:
+    - topologyKey: "kubernetes.io/hostname"
+      labelSelector:
+        matchLabels:
+          {{/* we need to select the "server" pod and align with its host */}}
+          {{- include "trustification.common.selectorLabels" ( merge (deepCopy .) (dict "name" "server" "component" "server") ) | nindent 10 }}
+{{- end }}
+{{- end }}

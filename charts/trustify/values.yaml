@@ -49,6 +49,16 @@ modules:
     metrics: {}
     rust: {}
 
+  importer:
+    enabled: true
+    image: {}
+    infrastructure: {}
+    tracing: {}
+    metrics: {}
+    rust: {}
+    workingDirectory:
+      size: 32Gi
+
   createDatabase:
     enabled: false
     image:

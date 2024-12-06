@@ -33,9 +33,11 @@ Arguments (dict):
 serviceAccountName: {{ . | quote }}
 {{- end }}
 
-{{- with .module.affinity }}
 affinity:
+{{- with .module.affinity }}
   {{- . | toYaml | nindent 2 }}
+{{- else }}
+  {{- include "trustification.storage.defaultPodAffinity" . | nindent 2 }}
 {{- end }}
 
 {{- end }}

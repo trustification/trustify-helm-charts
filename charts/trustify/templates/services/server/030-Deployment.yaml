@@ -36,8 +36,6 @@ spec:
             - api
             - --auth-configuration
             - "/etc/config/auth.yaml"
-            - --working-dir
-            - "/data/workdir"
 
           env:
 
@@ -85,16 +83,12 @@ spec:
               protocol: TCP
 
           volumeMounts:
-            - name: workdir
-              mountPath: /data/workdir
             {{- include "trustification.application.httpServerVolumesMounts" $mod | nindent 12 }}
             {{- include "trustification.authenticator.volumeMount" $mod | nindent 12 }}
             {{- include "trustification.storage.volumeMount" $mod | nindent 12 }}
             {{- include "trustification.application.extraVolumeMounts" $mod | nindent 12 }}
 
       volumes:
-        - name: workdir
-          emptyDir: {}
         {{- include "trustification.application.httpServerVolumes" $mod | nindent 8 }}
         {{- include "trustification.authenticator.volume" $mod | nindent 8 }}
         {{- include "trustification.storage.volume" $mod | nindent 8 }}
