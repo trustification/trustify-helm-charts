@@ -29,8 +29,9 @@ data:
         "profile",
         "roles",
         "web-origins",
-        "read:document",
         "create:document",
+        "read:document",
+        "update:document",
         "delete:document"
       ],
       "optionalClientScopes": [
@@ -65,7 +66,9 @@ data:
         "roles",
         "web-origins",
         "create:document",
-        "read:document"
+        "read:document",
+        "update:document",
+        "delete:document"
       ],
       "optionalClientScopes": [
         "address",
@@ -100,6 +103,7 @@ data:
         "web-origins",
         "read:document",
         "create:document",
+        "update:document",
         "delete:document"
       ],
       "optionalClientScopes": [

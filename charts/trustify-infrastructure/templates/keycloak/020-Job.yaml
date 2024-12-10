@@ -159,14 +159,14 @@ spec:
               # create scopes
               # shellcheck disable=SC2043
               for i in read:document; do
-              kcadm create client-scopes -r "${REALM}" -s "name=$i" -s protocol=openid-connect || true
+                kcadm create client-scopes -r "${REALM}" -s "name=$i" -s protocol=openid-connect || true
               done
 
-              for i in create:document delete:document; do
-              kcadm create client-scopes -r "${REALM}" -s "name=$i" -s protocol=openid-connect || true
-              ID=$(kcadm get client-scopes -r "${REALM}" --fields id,name --format csv --noquotes | grep ",${i}" | awk -F ',' '{print $1}')
-              # add all scopes to the chicken-manager
-              kcadm create "client-scopes/${ID}/scope-mappings/realm" -r "${REALM}" -b '[{"name":"chicken-manager", "id":"'"${MANAGER_ID}"'"}]' || true
+              for i in create:document update:document delete:document; do
+                kcadm create client-scopes -r "${REALM}" -s "name=$i" -s protocol=openid-connect || true
+                ID=$(kcadm get client-scopes -r "${REALM}" --fields id,name --format csv --noquotes | grep ",${i}" | awk -F ',' '{print $1}')
+                # add all scopes to the chicken-manager
+                kcadm create "client-scopes/${ID}/scope-mappings/realm" -r "${REALM}" -b '[{"name":"chicken-manager", "id":"'"${MANAGER_ID}"'"}]' || true
               done
 
               {{ if hasKey .Values.oidc.clients "frontend" }}
