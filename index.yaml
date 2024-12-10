@@ -180,6 +180,31 @@ entries:
   trustify-infrastructure:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2024-12-10T16:52:13.414713218Z"
+    dependencies:
+    - condition: keycloak.enabled
+      name: keycloak
+      repository: https://charts.bitnami.com/bitnami
+      version: 22.0.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.0.0
+    description: A Helm chart for setting up self-hosted infrastructure components
+      for using Trustify
+    digest: 1cbf08c842a984da6107ac4d93c58677677e6caac409cf5cdaf9bd94d20fd122
+    home: https://trustification.io
+    icon: https://raw.githubusercontent.com/trustification/trustification/main/docs/branding/svg/trustification_icon_default.svg
+    maintainers:
+    - email: jreimann@redhat.com
+      name: ctron
+    name: trustify-infrastructure
+    type: application
+    urls:
+    - https://github.com/trustification/trustify-helm-charts/releases/download/trustify-infrastructure-0.1.1/trustify-infrastructure-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2024-11-18T13:33:41.937067257Z"
     dependencies:
     - condition: keycloak.enabled
@@ -203,4 +228,4 @@ entries:
     urls:
     - https://github.com/trustification/trustify-helm-charts/releases/download/trustify-infrastructure-0.1.0/trustify-infrastructure-0.1.0.tgz
     version: 0.1.0
-generated: "2024-12-06T14:40:13.633457368Z"
+generated: "2024-12-10T16:52:13.414769774Z"
