@@ -1,6 +1,7 @@
 $schema: "charts/trustify/values.schema.json"
 
 appDomain: asdf
+otelCollector: "http://localhost:4317"
 tracing: {}
 
 modules:

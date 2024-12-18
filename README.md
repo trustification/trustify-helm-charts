@@ -43,6 +43,21 @@ Then deploy the application:
 helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN
 ```
 
+Install the infrastructure services **with traces enabled**:
+
+```bash
+helm upgrade --install --dependency-update -n $NAMESPACE infrastructure charts/trustify-infrastructure --values values-minikube.yaml --set-string keycloak.ingress.hostname=sso$APP_DOMAIN --set-string appDomain=$APP_DOMAIN --set jaeger.enabled=true --set-string jaeger.allInOne.ingress.hosts[0]=jaeger$APP_DOMAIN --set tracing.enabled=true --timeout 10m
+```
+
+Then deploy the application **with traces enabled**:
+
+```bash
+# Get the collector service name
+kubectl get svc
+# Install the application
+helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN --set tracing.enabled=true --set-string otelCollector="http://infrastructure-jaeger-collector:4317"
+```
+
 ### Kind
 
 Create a new cluster:

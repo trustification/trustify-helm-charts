@@ -44,6 +44,8 @@ Arguments (dict):
   value: parentbased_traceidratio
 - name: OTEL_TRACES_SAMPLER_ARG
   value: "0.1"
+- name: OTEL_EXPORTER_OTLP_ENDPOINT
+  value: {{ .root.Values.otelCollector }}
 {{- end }}
 
 {{- end }}

@@ -20,6 +20,10 @@ properties:
 
       When using OpenShift, this should be the application domain, when can be evaluated by running the following
       command: `oc -n openshift-ingress-operator get ingresscontrollers.operator.openshift.io default -o jsonpath='{.status.domain}'`.
+  otelCollector:
+    type: string
+    description: |
+      OTEL Collector back-end URL. Example: http://localhost:4317
 
   partOf:
     type: string

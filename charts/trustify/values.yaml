@@ -1,4 +1,5 @@
 appDomain: change-me
+otelCollector: "http://localhost:4317"
 
 partOf: trustify
 replicas: 1
