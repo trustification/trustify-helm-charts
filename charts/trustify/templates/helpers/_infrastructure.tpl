@@ -44,6 +44,8 @@ Arguments (dict):
   value: parentbased_traceidratio
 - name: OTEL_TRACES_SAMPLER_ARG
   value: "0.1"
+- name: OTEL_EXPORTER_OTLP_ENDPOINT
+  value: "http://infrastructure-otelcol:4317"
 {{- end }}
 
 {{- end }}
