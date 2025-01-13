@@ -1,5 +1,4 @@
 appDomain: change-me
-
 partOf: trustify
 replicas: 1
 
@@ -38,6 +37,7 @@ metrics:
 
 tracing:
   enabled: false
+  collector: ""
 
 modules:
   server:

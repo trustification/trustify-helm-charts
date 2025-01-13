@@ -27,3 +27,38 @@ keycloakPostInstall:
 
 oidc:
   clients: {}
+
+env:
+  - name: MY_POD_IP
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
+
+opentelemetry-collector:
+  image:
+    repository: "otel/opentelemetry-collector-contrib"
+  enabled: true
+  nameOverride: otelcol
+  mode: deployment
+  presets:
+    kubernetesAttributes:
+      enabled: true
+  service:
+    type: ClusterIP
+  config:
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: ${env:MY_POD_IP}:4317
+    exporters:
+      otlp:
+        endpoint: 'http://{{ .Release.Name }}-jaeger-collector:4317'
+        tls:
+          insecure: true
+    service:
+      pipelines:
+        traces:
+          exporters: [otlp]
+          processors: [batch]
+          receivers: [otlp]

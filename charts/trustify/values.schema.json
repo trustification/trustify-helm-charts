@@ -118,6 +118,10 @@
         "enabled": {
           "type": "boolean",
           "description": "Enable support for distributed tracing.\n"
+        },
+        "collector": {
+          "type": "string",
+          "description": "OpenTelemetry collector endpoint for tracing.\n"
         }
       }
     },

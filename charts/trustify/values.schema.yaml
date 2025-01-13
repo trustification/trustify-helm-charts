@@ -124,6 +124,10 @@ properties:
         type: boolean
         description: |
           Enable support for distributed tracing.
+      collector:
+        type: string
+        description: |
+          OpenTelemetry collector endpoint for tracing.
 
   rust:
     $ref: "#/definitions/RustApplicationConfig"
