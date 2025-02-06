@@ -35,6 +35,11 @@ Arguments (dict):
 - name: INFRASTRUCTURE_BIND
   value: "[::]:{{- include "trustification.application.infrastructure.port" . }}"
 
+{{- if eq ( include "trustification.application.metrics.enabled" . ) "true" }}
+- name: METRICS
+  value: "enabled"
+{{- end }}
+
 {{- if eq ( include "trustification.application.tracing.enabled" . ) "true" }}
 - name: TRACING
   value: "enabled"

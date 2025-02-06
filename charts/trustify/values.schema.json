@@ -5,7 +5,8 @@
   "additionalProperties": false,
   "required": [
     "appDomain",
-    "tracing"
+    "tracing",
+    "metrics"
   ],
   "properties": {
     "$schema": {
@@ -324,6 +325,9 @@
     },
     "jaeger": {
       "$ref": "#/definitions/Feature"
+    },
+    "prometheus": {
+      "$ref": "#/definitions/Feature"
     }
   },
   "definitions": {
@@ -395,6 +399,9 @@
     },
     "Metrics": {
       "type": "object",
+      "required": [
+        "metrics"
+      ],
       "properties": {
         "metrics": {
           "$ref": "#/definitions/MetricsConfig"

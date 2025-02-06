@@ -13,6 +13,9 @@ keycloak:
 jaeger:
   enabled: false
 
+prometheus:
+  enabled: false
+
 keycloakPostInstall:
   disabled: false
   # NOTE: this must be an image which contain things like bash, kcadm, grep, awk
@@ -43,6 +46,8 @@ opentelemetry-collector:
   presets:
     kubernetesAttributes:
       enabled: true
+    hostMetrics:
+      enabled: false
   service:
     type: ClusterIP
   config:
@@ -56,9 +61,16 @@ opentelemetry-collector:
         endpoint: 'http://{{ .Release.Name }}-jaeger-collector:4317'
         tls:
           insecure: true
+      otlphttp/prometheus:
+        endpoint: 'http://{{ .Release.Name }}-prometheus-server:9090/api/v1/otlp'
+        tls:
+          insecure: true
     service:
       pipelines:
         traces:
           exporters: [otlp]
           processors: [batch]
           receivers: [otlp]
+        metrics:
+          receivers: [otlp]
+          exporters: [otlphttp/prometheus]

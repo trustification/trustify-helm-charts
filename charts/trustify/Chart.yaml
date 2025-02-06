@@ -10,6 +10,6 @@ maintainers:
 
 type: application
 version: 0.1.4
-appVersion: "0.2.1"
+appVersion: "0.2.2"
 icon: https://raw.githubusercontent.com/trustification/trustification/main/docs/branding/svg/trustification_icon_default.svg
 home: https://trustification.io

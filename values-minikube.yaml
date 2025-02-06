@@ -1,6 +1,7 @@
 appDomain: change-me
 
 tracing: {}
+metrics: {}
 
 storage:
   type: filesystem
@@ -71,6 +72,37 @@ jaeger:
     enabled: false
   query:
     enabled: false
+
+prometheus:
+  enabled: false # can be enabled with `--set prometheus.enabled=true`
+  alertmanager:
+    enabled: false
+  configmapReload:
+    prometheus:
+      enabled: false
+  kube-state-metrics:
+    enabled: false
+  prometheus-node-exporter:
+    enabled: false
+  prometheus-pushgateway:
+    enabled: false
+  server:
+    ingress:
+      enabled: true
+      hosts: [""]
+    extraFlags:
+      - "web.enable-otlp-receiver" # https://github.com/open-telemetry/opentelemetry-helm-charts/pull/1462 and https://prometheus.io/docs/guides/opentelemetry/
+    global:
+      scrape_interval: 5s
+      scrape_timeout: 3s
+      evaluation_interval: 30s
+    prometheus.yml:
+      otlp:
+        keep_identifying_resource_attributes: true
+    persistentVolume:
+      enabled: false
+    service:
+      servicePort: 9090
 
 oidc:
   clients:

@@ -5,6 +5,7 @@ additionalProperties: false
 required:
   - appDomain
   - tracing
+  - metrics
 
 properties:
   "$schema":
@@ -109,7 +110,6 @@ properties:
   metrics:
     type: object
     additionalProperties: false
-
     properties:
       enabled:
         type: boolean
@@ -247,6 +247,9 @@ properties:
   jaeger:
     $ref: "#/definitions/Feature"
 
+  prometheus:
+    $ref: "#/definitions/Feature"
+
 # all the definitions
 
 definitions:
@@ -305,6 +308,8 @@ definitions:
 
   Metrics:
     type: object
+    required:
+      - metrics
     properties:
       metrics:
         $ref: "#/definitions/MetricsConfig"
