@@ -53,13 +53,13 @@ Using the default http://infrastructure-otelcol:4317 OpenTelemetry collector end
 command of the default infrastructure deployment:
 
 ```bash
-helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN --set tracing.enabled=true
+helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN --set tracing.enabled=true --set metrics.enabled=true
 ```
 
 Setting an explicit OpenTelemetry collector endpoint:
 
 ```bash
-helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN --set tracing.enabled=true --set-string tracing.collector="http://infrastructure-otelcol:4317"
+helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN --set tracing.enabled=true --set metrics.enabled=true --set-string collector="http://infrastructure-otelcol:4317"
 ```
 
 ### Kind

@@ -6,6 +6,7 @@ required:
   - appDomain
   - tracing
   - metrics
+  - collector
 
 properties:
   "$schema":
@@ -124,10 +125,11 @@ properties:
         type: boolean
         description: |
           Enable support for distributed tracing.
-      collector:
-        type: string
-        description: |
-          OpenTelemetry collector endpoint for tracing.
+
+  collector:
+    type: string
+    description: |
+      OpenTelemetry collector endpoint for tracing and metrics.
 
   rust:
     $ref: "#/definitions/RustApplicationConfig"

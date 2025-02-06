@@ -37,7 +37,8 @@ metrics:
 
 tracing:
   enabled: false
-  collector: ""
+
+collector: ""
 
 modules:
   server:
