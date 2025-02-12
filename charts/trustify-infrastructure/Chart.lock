@@ -1,10 +1,10 @@
 dependencies:
 - name: keycloak
   repository: oci://registry-1.docker.io/bitnamicharts
-  version: 22.0.0
+  version: 24.4.9
 - name: postgresql
   repository: oci://registry-1.docker.io/bitnamicharts
-  version: 16.0.0
+  version: 16.4.7
 - name: jaeger
   repository: https://jaegertracing.github.io/helm-charts
   version: 3.3.3
@@ -14,5 +14,5 @@ dependencies:
 - name: opentelemetry-collector
   repository: https://open-telemetry.github.io/opentelemetry-helm-charts
   version: 0.111.1
-digest: sha256:4f47ebddac0385759285f97b3e3b909372fb09ee3c925cbc1c915c204b7bca26
-generated: "2025-02-05T20:44:06.701657982-03:00"
+digest: sha256:9b5434e2fb770194b9c01020870222f1dc1ad7152925860a8fd13f5d32120994
+generated: "2025-02-11T17:58:39.821476902-03:00"
