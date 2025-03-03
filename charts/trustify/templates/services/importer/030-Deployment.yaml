@@ -1,7 +1,7 @@
 {{- if .Values.modules.importer.enabled }}
 {{- $mod := dict "root" . "name" "importer" "component" "importer" "module" .Values.modules.importer -}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ include "trustification.common.name" $mod }}
   labels:
@@ -10,7 +10,7 @@ metadata:
     {{- include "trustification.application.annotations" $mod | nindent 4 }}
 
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       {{- include "trustification.common.selectorLabels" $mod | nindent 6 }}
