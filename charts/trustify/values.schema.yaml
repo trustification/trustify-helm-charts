@@ -183,13 +183,11 @@ properties:
           - $ref: "#/definitions/Postgres"
           - type: object
             properties:
-              workingDirectory:
-                type: object
-                required:
-                  - size
-                properties:
-                  size:
-                    $ref: "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+              concurrency:
+                type: integer
+                minimum: 1
+                description: |
+                  The max number of import jobs that may run concurrently
 
       createDatabase:
         description: |
