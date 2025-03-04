@@ -1,7 +1,7 @@
 {{- if .Values.modules.importer.enabled }}
 {{- $mod := dict "root" . "name" "importer" "component" "importer" "module" .Values.modules.importer -}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ include "trustification.common.name" $mod }}
   labels:
@@ -10,7 +10,7 @@ metadata:
     {{- include "trustification.application.annotations" $mod | nindent 4 }}
 
 spec:
-  replicas: 1
+  replicas: {{ include "trustification.application.replicas" $mod }}
   selector:
     matchLabels:
       {{- include "trustification.common.selectorLabels" $mod | nindent 6 }}
@@ -34,6 +34,8 @@ spec:
             - importer
             - --working-dir
             - "/data/workdir"
+            - --concurrency
+            - {{ $mod.module.concurrency | default 1 | quote }}
 
           env:
 
@@ -57,17 +59,9 @@ spec:
             {{- include "trustification.application.extraVolumeMounts" $mod | nindent 12 }}
 
       volumes:
+        - name: workdir
+          emptyDir: {}
         {{- include "trustification.storage.volume" $mod | nindent 8 }}
         {{- include "trustification.application.extraVolumes" $mod | nindent 8 }}
-
-  volumeClaimTemplates:
-    - metadata:
-        name: workdir
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: {{ $mod.module.workingDirectory.size | quote }}
 
 {{ end }}
