@@ -60,7 +60,16 @@ spec:
 
       volumes:
         - name: workdir
-          emptyDir: {}
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                labels:
+                  type: importer-working-directory
+              spec:
+                accessModes: [ "ReadWriteOnce" ]
+                resources:
+                  requests:
+                    storage: {{ $mod.module.workingDirectory.size | quote }}
         {{- include "trustification.storage.volume" $mod | nindent 8 }}
         {{- include "trustification.application.extraVolumes" $mod | nindent 8 }}
 
