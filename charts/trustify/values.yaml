@@ -50,6 +50,10 @@ modules:
     tracing: {}
     metrics: {}
     rust: {}
+    resources:
+      requests:
+        cpu: 1
+        memory: 8Gi
 
   importer:
     enabled: true
@@ -59,6 +63,10 @@ modules:
     tracing: {}
     metrics: {}
     rust: {}
+    resources:
+      requests:
+        cpu: 1
+        memory: 8Gi
     concurrency: 1
     workingDirectory:
       size: 32Gi
