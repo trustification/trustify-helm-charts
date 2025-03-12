@@ -40,7 +40,7 @@ env:
 opentelemetry-collector:
   image:
     repository: "otel/opentelemetry-collector-contrib"
-  enabled: true
+  enabled: false
   nameOverride: otelcol
   mode: deployment
   presets:
