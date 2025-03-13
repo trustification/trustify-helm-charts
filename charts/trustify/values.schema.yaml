@@ -81,17 +81,6 @@ properties:
       className:
         type: string
 
-  serviceMonitor:
-    type: object
-    description: |
-      Configure the service monitor for scraping metrics.
-
-      Enabling the serviceMonitor feature will create a `ServiceMonitor` (which must be installed upfront) to
-      scrape metrics. Metrics should also be enabled in addition, otherwise the service monitor will not find
-      any relevant services.
-    allOf:
-      - $ref: "#/definitions/Feature"
-
   infrastructure:
     type: object
     additionalProperties: false
@@ -127,9 +116,16 @@ properties:
           Enable support for distributed tracing.
 
   collector:
-    type: string
-    description: |
-      OpenTelemetry collector endpoint for tracing and metrics.
+    type: object
+    additionalProperties: false
+    properties:
+      deployment:
+        $ref: "#/definitions/OtelDeployment"
+
+      endpoint:
+        type: string
+        description: |
+          OpenTelemetry collector endpoint for tracing and metrics.
 
   rust:
     $ref: "#/definitions/RustApplicationConfig"
@@ -728,3 +724,14 @@ definitions:
         $ref: "#/definitions/ByteSize"
       jsonLimit:
         $ref: "#/definitions/ByteSize"
+
+  OtelDeployment:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+        description: Enable the deployment of the OpenTelemetry collector
+      config:
+        type: object
+        description: |
+          The OTEL collector configuration. If not present, a default will be generated.

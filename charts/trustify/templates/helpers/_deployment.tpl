@@ -21,6 +21,17 @@ Arguments (dict):
 {{- end }}
 
 {{/*
+Additional pod annotations for applications.
+
+Arguments (dict):
+  * root - .
+  * module - module object
+*/}}
+{{- define "trustification.application.podAnnotations" }}
+{{- include "trustification.application.collector.podAnnotations" . }}
+{{- end }}
+
+{{/*
 Pod settings
 
 Arguments (dict):

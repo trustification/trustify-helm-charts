@@ -2,19 +2,10 @@
 Are metrics enabled?
 
 Arguments (dict):
-  * root - .
-  * module - module object
+  * .
 */}}
 {{ define "trustification.application.metrics.enabled"}}
-{{- if hasKey .module "metrics" }}
-{{- if hasKey .module.metrics "enabled" }}
-{{- .module.metrics.enabled }}
-{{- else }}
-{{- .root.Values.metrics.enabled }}
-{{- end }}
-{{- else -}}
-false
-{{- end }}
+{{- .Values.metrics.enabled }}
 {{- end }}
 
 {{/*
@@ -25,7 +16,7 @@ Arguments (dict):
   * module - module object
 */}}
 {{ define "trustification.application.metrics.podLabels" }}
-{{- if eq (include "trustification.application.metrics.enabled" . ) "true" }}
+{{- if eq (include "trustification.application.metrics.enabled" .root ) "true" }}
 metrics: "true"
 {{ end }}
 {{- end }}

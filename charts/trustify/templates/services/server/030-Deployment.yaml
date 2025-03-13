@@ -21,6 +21,7 @@ spec:
         {{- include "trustification.application.podLabels" $mod | nindent 8 }}
       annotations:
         configHash/auth: {{ include (print $.Template.BasePath "/services/server/020-ConfigMap-auth.yaml") . | sha256sum }}
+        {{- include "trustification.application.podAnnotations" $mod | nindent 8 }}
 
     spec:
       {{- include "trustification.application.pod" $mod | nindent 6 }}
