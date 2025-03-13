@@ -38,9 +38,9 @@ env:
         fieldPath: status.hostIP
 
 opentelemetry-collector:
+  enabled: false
   image:
     repository: "otel/opentelemetry-collector-contrib"
-  enabled: false
   nameOverride: otelcol
   mode: deployment
   presets:
