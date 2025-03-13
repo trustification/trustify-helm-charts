@@ -628,6 +628,7 @@ definitions:
       - accessKey
       - secretKey
       - bucket
+      - region
     additionalProperties: false
     properties:
       type:
@@ -644,22 +645,12 @@ definitions:
         $ref: "#/definitions/ValueOrRef"
       bucket:
         type: string
-      region: true
-      endpoint: true
-    oneOf:
-      - type: object
-        required:
-          - region
-        properties:
-          region:
-            $ref: "#/definitions/ValueOrRef"
-      - type: object
-        required:
-          - endpoint
-        properties:
-          endpoint:
-            type: string
-            format: uri
+        description: |
+          The name of the bucket.
+      region:
+        $ref: "#/definitions/ValueOrRef"
+        description: |
+          The AWS region of the bucket, or an endpoint. 
 
   Postgres:
     type: object

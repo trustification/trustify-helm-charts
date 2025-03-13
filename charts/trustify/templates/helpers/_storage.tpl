@@ -54,17 +54,8 @@ Arguments (dict):
   {{- include "trustification.common.envVarValue" .storage.accessKey | nindent 2 }}
 - name: TRUSTD_S3_SECRET_KEY
   {{- include "trustification.common.envVarValue" .storage.secretKey | nindent 2 }}
-
-{{ if .storage.endpoint }}
-- name: TRUSTD_S3_ENDPOINT
-  value: {{ .storage.endpoint | quote }}
-- name: TRUSTD_S3_REGION
-  value: "eu-west-1" # just a dummy value
-{{ else }}
 - name: TRUSTD_S3_REGION
   {{- include "trustification.common.envVarValue" .storage.region | nindent 2 }}
-{{ end }}
-
 - name: TRUSTD_S3_BUCKET
   value: {{ .storage.bucket | quote }}
 

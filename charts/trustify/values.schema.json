@@ -823,7 +823,8 @@
         "type",
         "accessKey",
         "secretKey",
-        "bucket"
+        "bucket",
+        "region"
       ],
       "additionalProperties": false,
       "properties": {
@@ -842,36 +843,14 @@
           "$ref": "#/definitions/ValueOrRef"
         },
         "bucket": {
-          "type": "string"
+          "type": "string",
+          "description": "The name of the bucket.\n"
         },
-        "region": true,
-        "endpoint": true
-      },
-      "oneOf": [
-        {
-          "type": "object",
-          "required": [
-            "region"
-          ],
-          "properties": {
-            "region": {
-              "$ref": "#/definitions/ValueOrRef"
-            }
-          }
-        },
-        {
-          "type": "object",
-          "required": [
-            "endpoint"
-          ],
-          "properties": {
-            "endpoint": {
-              "type": "string",
-              "format": "uri"
-            }
-          }
+        "region": {
+          "$ref": "#/definitions/ValueOrRef",
+          "description": "The AWS region of the bucket, or an endpoint. \n"
         }
-      ]
+      }
     },
     "Postgres": {
       "type": "object",
