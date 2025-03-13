@@ -248,6 +248,9 @@ properties:
   keycloak:
     $ref: "#/definitions/Feature"
 
+  keycloakPostInstall:
+    $ref: "#/definitions/Feature"
+
   postgresql:
     $ref: "#/definitions/Feature"
 
