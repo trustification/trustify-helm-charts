@@ -70,7 +70,6 @@ spec:
               value: {{ include "trustification.common.byteSizeValue" . }}
             {{- end }}
 
-            {{/* FIXME: adapt env-var */}}
             {{- if eq ( include "trustification.openshift.useServiceCa" .root ) "true" }}
             - name: CLIENT_TLS_CA_CERTIFICATES
               value: /run/secrets/kubernetes.io/serviceaccount/service-ca.crt
