@@ -79,15 +79,6 @@
         }
       }
     },
-    "serviceMonitor": {
-      "type": "object",
-      "description": "Configure the service monitor for scraping metrics.\n\nEnabling the serviceMonitor feature will create a `ServiceMonitor` (which must be installed upfront) to\nscrape metrics. Metrics should also be enabled in addition, otherwise the service monitor will not find\nany relevant services.\n",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Feature"
-        }
-      ]
-    },
     "infrastructure": {
       "type": "object",
       "additionalProperties": false,
@@ -124,8 +115,17 @@
       }
     },
     "collector": {
-      "type": "string",
-      "description": "OpenTelemetry collector endpoint for tracing and metrics.\n"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "deployment": {
+          "$ref": "#/definitions/OtelDeployment"
+        },
+        "endpoint": {
+          "type": "string",
+          "description": "OpenTelemetry collector endpoint for tracing and metrics.\n"
+        }
+      }
     },
     "rust": {
       "$ref": "#/definitions/RustApplicationConfig"
@@ -945,6 +945,19 @@
         },
         "jsonLimit": {
           "$ref": "#/definitions/ByteSize"
+        }
+      }
+    },
+    "OtelDeployment": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable the deployment of the OpenTelemetry collector"
+        },
+        "config": {
+          "type": "object",
+          "description": "The OTEL collector configuration. If not present, a default will be generated.\n"
         }
       }
     }

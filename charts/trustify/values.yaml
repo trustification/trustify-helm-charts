@@ -26,9 +26,6 @@ oidc:
     cli:
       clientSecret:
 
-serviceMonitor:
-  enabled: false
-
 infrastructure:
   port: 9010
 
@@ -38,7 +35,9 @@ metrics:
 tracing:
   enabled: false
 
-collector: ""
+collector:
+  deployment:
+    enabled: false
 
 modules:
   server:

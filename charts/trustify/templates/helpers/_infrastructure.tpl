@@ -35,12 +35,12 @@ Arguments (dict):
 - name: INFRASTRUCTURE_BIND
   value: "[::]:{{- include "trustification.application.infrastructure.port" . }}"
 
-{{- if eq ( include "trustification.application.metrics.enabled" . ) "true" }}
+{{- if eq ( include "trustification.application.metrics.enabled" .root ) "true" }}
 - name: METRICS
   value: "enabled"
 {{- end }}
 
-{{- if eq ( include "trustification.application.tracing.enabled" . ) "true" }}
+{{- if eq ( include "trustification.application.tracing.enabled" .root ) "true" }}
 - name: TRACING
   value: "enabled"
 - name: OTEL_BSP_MAX_EXPORT_BATCH_SIZE
@@ -49,8 +49,12 @@ Arguments (dict):
   value: parentbased_traceidratio
 - name: OTEL_TRACES_SAMPLER_ARG
   value: "0.1"
+{{- end }}
+
+{{- if eq ( include "trustification.application.collector.enabled" .root ) "true" }}
 {{ include "trustification.application.collector" . }}
 {{- end }}
+
 {{- end }}
 
 {{/*
