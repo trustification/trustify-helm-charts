@@ -921,7 +921,7 @@
         },
         "suspend": {
           "type": "boolean",
-          "description": "Allows to suspend, but keep, a `CronJob`.\n"
+          "description": "Allows suspending, but keeping, a `CronJob`.\n"
         }
       }
     },
@@ -945,6 +945,11 @@
         },
         "jsonLimit": {
           "$ref": "#/definitions/ByteSize"
+        },
+        "workers": {
+          "type": "number",
+          "minimum": 1,
+          "description": "The number of HTTP workers of the Actix application.\n\nAlso see: <https://actix.rs/docs/server/#multi-threading>\n"
         }
       }
     },

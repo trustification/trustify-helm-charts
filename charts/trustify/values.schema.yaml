@@ -708,7 +708,7 @@ definitions:
       suspend:
         type: boolean
         description: |
-          Allows to suspend, but keep, a `CronJob`.
+          Allows suspending, but keeping, a `CronJob`.
 
   ByteSize:
     oneOf:
@@ -724,6 +724,13 @@ definitions:
         $ref: "#/definitions/ByteSize"
       jsonLimit:
         $ref: "#/definitions/ByteSize"
+      workers:
+        type: number
+        minimum: 1
+        description: |
+          The number of HTTP workers of the Actix application.
+          
+          Also see: <https://actix.rs/docs/server/#multi-threading>
 
   OtelDeployment:
     type: object

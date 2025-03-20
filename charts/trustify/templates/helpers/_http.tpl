@@ -28,6 +28,11 @@ Arguments (dict):
   value: {{ include "trustification.common.byteSizeValue" . }}
 {{- end }}
 
+{{- with .module.workers }}
+- name: HTTP_SERVER_WORKERS
+  value: {{ . | quote }}
+{{- end }}
+
 {{- end }}
 
 {{/*
