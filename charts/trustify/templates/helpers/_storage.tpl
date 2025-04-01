@@ -109,6 +109,6 @@ podAffinity:
       labelSelector:
         matchLabels:
           {{/* we need to select the "server" pod and align with its host */}}
-          {{- include "trustification.common.selectorLabels" ( merge (deepCopy .) (dict "name" "server" "component" "server") ) | nindent 10 }}
+          {{- include "trustification.common.selectorLabels" ( mergeOverwrite (deepCopy .) (dict "name" "server" "component" "server") ) | nindent 10 }}
 {{- end }}
 {{- end }}

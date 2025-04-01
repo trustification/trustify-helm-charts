@@ -44,6 +44,16 @@ Arguments (dict):
 serviceAccountName: {{ . | quote }}
 {{- end }}
 
+{{- end }}
+
+{{/*
+Pod affinity settings
+
+Arguments (dict):
+  * root - .
+  * module - module object
+*/}}
+{{- define "trustification.application.podAffinity" }}
 affinity:
 {{- with .module.affinity }}
   {{- . | toYaml | nindent 2 }}
