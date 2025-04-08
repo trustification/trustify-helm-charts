@@ -80,6 +80,8 @@ properties:
     properties:
       className:
         type: string
+      additionalAnnotations:
+        type: object
 
   infrastructure:
     type: object

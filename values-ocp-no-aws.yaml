@@ -2,6 +2,8 @@ appDomain: change-me
 
 ingress:
   className: openshift-default
+  additionalAnnotations:
+    "haproxy.router.openshift.io/timeout": "5m"
 
 storage:
   type: filesystem
