@@ -2,6 +2,8 @@ appDomain: change-me # <1>
 
 ingress:
   className: openshift-default
+  additionalAnnotations:
+    "haproxy.router.openshift.io/timeout": "5m"
 
 authenticator:
   type: cognito
