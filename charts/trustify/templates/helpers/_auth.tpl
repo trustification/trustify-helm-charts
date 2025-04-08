@@ -104,7 +104,7 @@ authentication:
         - "read.sbom"
         - "read.weakness"
 
-      groupSelector: "$.['cognito:groups'][*]"
+      groupSelector: "$['cognito:groups'][*]"
 
       groupMappings:
         manager:
