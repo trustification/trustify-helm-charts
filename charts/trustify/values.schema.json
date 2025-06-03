@@ -819,6 +819,10 @@
         },
         "storageClassName": {
           "type": "string"
+        },
+        "compression": {
+          "$ref": "#/definitions/StorageCompression",
+          "description": "The compression algorithm used when storing documents.\n"
         }
       }
     },
@@ -854,9 +858,21 @@
         },
         "region": {
           "$ref": "#/definitions/ValueOrRef",
-          "description": "The AWS region of the bucket, or an endpoint. \n"
+          "description": "The AWS region of the bucket, or an endpoint.\n"
+        },
+        "compression": {
+          "$ref": "#/definitions/StorageCompression",
+          "description": "The compression algorithm used when storing documents.\n"
         }
       }
+    },
+    "StorageCompression": {
+      "type": "string",
+      "default": "none",
+      "enum": [
+        "none",
+        "zstd"
+      ]
     },
     "Postgres": {
       "type": "object",
