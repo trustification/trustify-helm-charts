@@ -19,9 +19,9 @@ Arguments (dict):
 {{- include "_trustification.storage.common.envVars" ( set (deepCopy .) "storage" .storage ) }}
 
 {{- if eq .storage.type "filesystem" }}
-{{- include "_trustification.storage.filesystem.envVars" . }}
+{{ include "_trustification.storage.filesystem.envVars" . }}
 {{- else if eq .storage.type "s3" }}
-{{- include "_trustification.storage.s3.envVars" . }}
+{{ include "_trustification.storage.s3.envVars" . }}
 {{- else }}
 {{- fail ".storage.type must either be set to 'filesystem' or 's3'" }}
 {{- end }}
