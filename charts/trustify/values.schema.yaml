@@ -162,8 +162,6 @@ properties:
           - $ref: "#/definitions/Postgres"
           - type: object
             properties:
-              analyticsWriteKey:
-                type: string
               uploadLimit:
                 $ref: "#/definitions/ByteSize"
 
