@@ -617,6 +617,10 @@ definitions:
         $ref: "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       storageClassName:
         type: string
+      compression:
+        $ref: "#/definitions/StorageCompression"
+        description: |
+          The compression algorithm used when storing documents.
 
   S3StorageConfig:
     description: |
@@ -649,7 +653,18 @@ definitions:
       region:
         $ref: "#/definitions/ValueOrRef"
         description: |
-          The AWS region of the bucket, or an endpoint. 
+          The AWS region of the bucket, or an endpoint.
+      compression:
+        $ref: "#/definitions/StorageCompression"
+        description: |
+          The compression algorithm used when storing documents.
+
+  StorageCompression:
+    type: string
+    default: none
+    enum:
+      - none
+      - zstd
 
   Postgres:
     type: object
