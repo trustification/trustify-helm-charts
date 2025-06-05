@@ -860,6 +860,10 @@
         "compression": {
           "$ref": "#/definitions/StorageCompression",
           "description": "The compression algorithm used when storing documents.\n"
+        },
+        "pathStyle": {
+          "type": "boolean",
+          "description": "Allow enabling path style access.\n"
         }
       }
     },
