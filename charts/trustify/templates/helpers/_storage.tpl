@@ -59,6 +59,11 @@ Arguments (dict):
 - name: TRUSTD_S3_BUCKET
   value: {{ .storage.bucket | quote }}
 
+{{- with .storage.pathStyle }}
+- name: TRUSTD_S3_PATH_STYLE
+  value: {{ . | quote }}
+{{- end }}
+
 {{- with .root.Values.tls.additionalTrustAnchor }}
 - name: TRUSTD_S3_TRUST_ANCHORS
   value: {{ . | quote }}
