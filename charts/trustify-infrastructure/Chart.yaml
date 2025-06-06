@@ -40,5 +40,5 @@ dependencies:
     condition: prometheus.enabled
   - name: opentelemetry-collector
     repository: https://open-telemetry.github.io/opentelemetry-helm-charts
-    version: 0.111.1
+    version: 0.126.0
     condition: opentelemetry-collector.enabled

@@ -19,7 +19,7 @@ prometheus:
 keycloakPostInstall:
   disabled: false
   # NOTE: this must be an image which contain things like bash, kcadm, grep, awk
-  image: docker.io/bitnami/keycloak:26.1.1-debian-12-r0
+  image: docker.io/bitnami/keycloak:26
   kcadmPath: /opt/bitnami/keycloak/bin/kcadm.sh
   realmAdmin:
     name: admin
@@ -40,12 +40,12 @@ env:
 opentelemetry-collector:
   enabled: false
   image:
-    repository: "otel/opentelemetry-collector-contrib"
+    repository: "otel/opentelemetry-collector"
   nameOverride: otelcol
+  command:
+    name: "otelcol"
   mode: deployment
   presets:
-    kubernetesAttributes:
-      enabled: true
     hostMetrics:
       enabled: false
   service:
