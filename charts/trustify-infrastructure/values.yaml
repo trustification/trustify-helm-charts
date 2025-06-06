@@ -40,12 +40,12 @@ env:
 opentelemetry-collector:
   enabled: false
   image:
-    repository: "otel/opentelemetry-collector-contrib"
+    repository: "otel/opentelemetry-collector"
   nameOverride: otelcol
+  command:
+    name: "otelcol"
   mode: deployment
   presets:
-    kubernetesAttributes:
-      enabled: true
     hostMetrics:
       enabled: false
   service:
