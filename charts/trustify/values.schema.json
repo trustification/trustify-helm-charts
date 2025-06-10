@@ -190,6 +190,10 @@
               "properties": {
                 "uploadLimit": {
                   "$ref": "#/definitions/ByteSize"
+                },
+                "maximumCacheSize": {
+                  "description": "The maximum number of the bytes the analysis cache will hold before evicting entries.\n",
+                  "$ref": "#/definitions/ByteSize"
                 }
               }
             }
