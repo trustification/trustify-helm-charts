@@ -59,7 +59,7 @@ helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-mi
 Setting an explicit OpenTelemetry collector endpoint:
 
 ```bash
-helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN --set tracing.enabled=true --set metrics.enabled=true --set-string collector="http://infrastructure-otelcol:4317"
+helm upgrade --install -n $NAMESPACE trustify charts/trustify --values values-minikube.yaml --set-string appDomain=$APP_DOMAIN --set tracing.enabled=true --set metrics.enabled=true --set-string collector.endpoint="http://infrastructure-otelcol:4317"
 ```
 
 ### Kind
