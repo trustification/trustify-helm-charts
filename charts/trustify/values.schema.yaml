@@ -121,9 +121,6 @@ properties:
     type: object
     additionalProperties: false
     properties:
-      deployment:
-        $ref: "#/definitions/OtelDeployment"
-
       endpoint:
         type: string
         description: |
@@ -757,13 +754,3 @@ definitions:
           
           Also see: <https://actix.rs/docs/server/#multi-threading>
 
-  OtelDeployment:
-    type: object
-    properties:
-      enabled:
-        type: boolean
-        description: Enable the deployment of the OpenTelemetry collector
-      config:
-        type: object
-        description: |
-          The OTEL collector configuration. If not present, a default will be generated.

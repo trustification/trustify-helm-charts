@@ -121,9 +121,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "deployment": {
-          "$ref": "#/definitions/OtelDeployment"
-        },
         "endpoint": {
           "type": "string",
           "description": "OpenTelemetry collector endpoint for tracing and metrics.\n"
@@ -977,19 +974,6 @@
           "type": "number",
           "minimum": 1,
           "description": "The number of HTTP workers of the Actix application.\n\nAlso see: <https://actix.rs/docs/server/#multi-threading>\n"
-        }
-      }
-    },
-    "OtelDeployment": {
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "type": "boolean",
-          "description": "Enable the deployment of the OpenTelemetry collector"
-        },
-        "config": {
-          "type": "object",
-          "description": "The OTEL collector configuration. If not present, a default will be generated.\n"
         }
       }
     }
