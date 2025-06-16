@@ -6,7 +6,6 @@ required:
   - appDomain
   - tracing
   - metrics
-  - collector
 
 properties:
   "$schema":
@@ -121,9 +120,6 @@ properties:
     type: object
     additionalProperties: false
     properties:
-      deployment:
-        $ref: "#/definitions/OtelDeployment"
-
       endpoint:
         type: string
         description: |
@@ -261,6 +257,31 @@ properties:
 
   prometheus:
     $ref: "#/definitions/Feature"
+
+allOf:
+  - if:
+      anyOf:
+        - properties:
+            metrics:
+              properties:
+                enabled:
+                  const: true
+              required:
+                - enabled
+        - properties:
+            tracing:
+              properties:
+                enabled:
+                  const: true
+              required:
+                - enabled
+    then:
+      required:
+        - collector
+      properties:
+        collector:
+          required:
+            - endpoint
 
 # all the definitions
 
@@ -754,16 +775,6 @@ definitions:
         minimum: 1
         description: |
           The number of HTTP workers of the Actix application.
-          
+
           Also see: <https://actix.rs/docs/server/#multi-threading>
 
-  OtelDeployment:
-    type: object
-    properties:
-      enabled:
-        type: boolean
-        description: Enable the deployment of the OpenTelemetry collector
-      config:
-        type: object
-        description: |
-          The OTEL collector configuration. If not present, a default will be generated.

@@ -6,8 +6,7 @@
   "required": [
     "appDomain",
     "tracing",
-    "metrics",
-    "collector"
+    "metrics"
   ],
   "properties": {
     "$schema": {
@@ -121,9 +120,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "deployment": {
-          "$ref": "#/definitions/OtelDeployment"
-        },
         "endpoint": {
           "type": "string",
           "description": "OpenTelemetry collector endpoint for tracing and metrics.\n"
@@ -346,6 +342,54 @@
       "$ref": "#/definitions/Feature"
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "metrics": {
+                "properties": {
+                  "enabled": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "enabled"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "tracing": {
+                "properties": {
+                  "enabled": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "enabled"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "collector"
+        ],
+        "properties": {
+          "collector": {
+            "required": [
+              "endpoint"
+            ]
+          }
+        }
+      }
+    }
+  ],
   "definitions": {
     "Scalable": {
       "description": "Configuration options for a scalable deployment.\n",
@@ -977,19 +1021,6 @@
           "type": "number",
           "minimum": 1,
           "description": "The number of HTTP workers of the Actix application.\n\nAlso see: <https://actix.rs/docs/server/#multi-threading>\n"
-        }
-      }
-    },
-    "OtelDeployment": {
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "type": "boolean",
-          "description": "Enable the deployment of the OpenTelemetry collector"
-        },
-        "config": {
-          "type": "object",
-          "description": "The OTEL collector configuration. If not present, a default will be generated.\n"
         }
       }
     }
