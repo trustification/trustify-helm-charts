@@ -122,6 +122,7 @@ properties:
     properties:
       endpoint:
         type: string
+        pattern: ^(http|https)://
         description: |
           OpenTelemetry collector endpoint for tracing and metrics.
 
