@@ -41,6 +41,7 @@ modules:
 
 keycloak:
   enabled: true
+  resourcesPreset: large
   production: false
   auth:
     adminUser: admin
