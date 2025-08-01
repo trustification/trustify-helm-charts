@@ -38,17 +38,15 @@ Arguments (dict):
 {{- if eq ( include "trustification.application.metrics.enabled" .root ) "true" }}
 - name: METRICS
   value: "enabled"
+{{ include "trustification.application.metrics.otelMetricExportInterval" . }}
 {{- end }}
 
 {{- if eq ( include "trustification.application.tracing.enabled" .root ) "true" }}
 - name: TRACING
   value: "enabled"
-- name: OTEL_BSP_MAX_EXPORT_BATCH_SIZE
-  value: "32"
-- name: OTEL_TRACES_SAMPLER
-  value: parentbased_traceidratio
-- name: OTEL_TRACES_SAMPLER_ARG
-  value: "0.1"
+{{ include "trustification.application.tracing.otelBspMaxExportBatchSize" . }}
+{{ include "trustification.application.tracing.otelTracesSampler" . }}
+{{ include "trustification.application.tracing.otelTracesSamplerArg" . }}
 {{- end }}
 
 {{- if eq ( include "trustification.application.collector.enabled" .root ) "true" }}

@@ -20,3 +20,16 @@ Arguments (dict):
 metrics: "true"
 {{ end }}
 {{- end }}
+
+{{/*
+Specifies how frequently metrics are exported by the application.
+
+Arguments (dict):
+  * .
+*/}}
+{{ define "trustification.application.metrics.otelMetricExportInterval"}}
+{{- if hasKey .root.Values.metrics "otelMetricExportInterval" }}
+- name: OTEL_METRIC_EXPORT_INTERVAL
+  value: {{ .root.Values.metrics.otelMetricExportInterval | quote }}
+{{ end }}
+{{- end }}

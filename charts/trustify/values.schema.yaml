@@ -106,6 +106,10 @@ properties:
         type: boolean
         description: |
           Enable support for application metrics.
+      otelMetricExportInterval:
+        type: integer
+        description: |
+          The interval in milliseconds for exporting metrics. Will be used as the value for the `OTEL_METRIC_EXPORT_INTERVAL` variable.
 
   tracing:
     type: object
@@ -115,6 +119,19 @@ properties:
         type: boolean
         description: |
           Enable support for distributed tracing.
+      otelBspMaxExportBatchSize:
+        type: integer
+        minimum: 1
+        description: |
+          The maximum batch size for exporting spans. Will be used as the value for the `OTEL_BSP_MAX_EXPORT_BATCH_SIZE` variable.
+      otelTracesSampler:
+        type: string
+        description: |
+          The trace sampling strategy. Will be used as the value for the `OTEL_TRACES_SAMPLER` variable.
+      otelTracesSamplerArg:
+        type: string
+        description: |
+          The trace sampling probability. Will be used as the value for the `OTEL_TRACES_SAMPLER_ARG` variable.
 
   collector:
     type: object
@@ -354,6 +371,10 @@ definitions:
     properties:
       enabled:
         type: boolean
+      otelMetricExportInterval:
+        type: integer
+        description: |
+          The interval in milliseconds for exporting metrics. Will be used as the value for the `OTEL_METRIC_EXPORT_INTERVAL` variable.
 
   Tracing:
     type: object
@@ -369,6 +390,19 @@ definitions:
     properties:
       enabled:
         type: boolean
+      otelBspMaxExportBatchSize:
+        type: integer
+        minimum: 1
+        description: |
+          The maximum batch size for exporting spans. Will be used as the value for the `OTEL_BSP_MAX_EXPORT_BATCH_SIZE` variable.
+      otelTracesSampler:
+        type: string
+        description: |
+          The trace sampling strategy. Will be used as the value for the `OTEL_TRACES_SAMPLER` variable.
+      otelTracesSamplerArg:
+        type: string
+        description: |
+          The trace sampling probability. Will be used as the value for the `OTEL_TRACES_SAMPLER_ARG` variable.
 
   Image:
     type: object
