@@ -103,6 +103,10 @@
         "enabled": {
           "type": "boolean",
           "description": "Enable support for application metrics.\n"
+        },
+        "otelMetricExportInterval": {
+          "type": "integer",
+          "description": "The interval in milliseconds for exporting metrics. Will be used as the value for the `OTEL_METRIC_EXPORT_INTERVAL` variable.\n"
         }
       }
     },
@@ -113,6 +117,19 @@
         "enabled": {
           "type": "boolean",
           "description": "Enable support for distributed tracing.\n"
+        },
+        "otelBspMaxExportBatchSize": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The maximum batch size for exporting spans. Will be used as the value for the `OTEL_BSP_MAX_EXPORT_BATCH_SIZE` variable.\n"
+        },
+        "otelTracesSampler": {
+          "type": "string",
+          "description": "The trace sampling strategy. Will be used as the value for the `OTEL_TRACES_SAMPLER` variable.\n"
+        },
+        "otelTracesSamplerArg": {
+          "type": "string",
+          "description": "The trace sampling probability. Will be used as the value for the `OTEL_TRACES_SAMPLER_ARG` variable.\n"
         }
       }
     },
@@ -475,6 +492,10 @@
       "properties": {
         "enabled": {
           "type": "boolean"
+        },
+        "otelMetricExportInterval": {
+          "type": "integer",
+          "description": "The interval in milliseconds for exporting metrics. Will be used as the value for the `OTEL_METRIC_EXPORT_INTERVAL` variable.\n"
         }
       }
     },
@@ -495,6 +516,19 @@
       "properties": {
         "enabled": {
           "type": "boolean"
+        },
+        "otelBspMaxExportBatchSize": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The maximum batch size for exporting spans. Will be used as the value for the `OTEL_BSP_MAX_EXPORT_BATCH_SIZE` variable.\n"
+        },
+        "otelTracesSampler": {
+          "type": "string",
+          "description": "The trace sampling strategy. Will be used as the value for the `OTEL_TRACES_SAMPLER` variable.\n"
+        },
+        "otelTracesSamplerArg": {
+          "type": "string",
+          "description": "The trace sampling probability. Will be used as the value for the `OTEL_TRACES_SAMPLER_ARG` variable.\n"
         }
       }
     },
