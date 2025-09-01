@@ -28,7 +28,7 @@ Arguments (dict):
 {{- end }}
 
 {{/*
-A default ingress definion.
+A default ingress definition.
 
 Arguments (dict):
   * root - .
