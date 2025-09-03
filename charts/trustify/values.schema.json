@@ -316,7 +316,7 @@
                   "type": "object",
                   "description": "The importers to create",
                   "additionalProperties": {
-                    "$ref": "https://raw.githubusercontent.com/trustification/trustify/main/modules/importer/schema/importer.json"
+                    "$ref": "https://raw.githubusercontent.com/guacsec/trustify/main/modules/importer/schema/importer.json"
                   }
                 }
               }
@@ -647,7 +647,7 @@
           ],
           "properties": {
             "content": {
-              "$ref": "https://raw.githubusercontent.com/trustification/trustify/main/common/auth/schema/auth.json"
+              "$ref": "https://raw.githubusercontent.com/guacsec/trustify/main/common/auth/schema/auth.json"
             }
           }
         },
