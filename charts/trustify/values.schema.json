@@ -76,14 +76,14 @@
         "enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Controls whether ingress resources should be created globally. Defaults to true for backward compatibility."
+          "description": "Controls whether ingress resources should be created globally. Defaults to true for backward compatibility.\n"
         },
         "hosts": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Multiple hostnames for the ingress. If specified, overrides the single host configuration. These hosts will be automatically used for TLS configuration if no explicit TLS config is provided."
+          "description": "Multiple hostnames for the ingress. If specified, overrides the single host configuration.\nThese hosts will be automatically used for TLS configuration if no explicit TLS config is provided.\n"
         },
         "className": {
           "type": "string"
@@ -107,7 +107,7 @@
               }
             }
           },
-          "description": "TLS configuration for the ingress. Each item can specify hosts and secretName for TLS termination. If not specified and hosts are defined, TLS will be automatically configured using the hosts."
+          "description": "TLS configuration for the ingress. Each item can specify hosts and secretName for TLS termination.\nIf not specified and hosts are defined, TLS will be automatically configured using the hosts.\n"
         }
       }
     },
@@ -636,7 +636,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Hostnames for the ingress. If not specified, defaults to [{service-name}{appDomain}]. These hosts will be automatically used for TLS configuration if no explicit TLS config is provided."
+          "description": "Hostnames for the ingress. If not specified, defaults to [{service-name}{appDomain}].\nThese hosts will be automatically used for TLS configuration if no explicit TLS config is provided.\n"
         },
         "className": {
           "type": "string"
@@ -664,7 +664,7 @@
               }
             }
           },
-          "description": "TLS configuration for the ingress. Each item can specify hosts and secretName for TLS termination. If not specified and hosts are defined, TLS will be automatically configured using the hosts."
+          "description": "TLS configuration for the ingress. Each item can specify hosts and secretName for TLS termination.\nIf not specified and hosts are defined, TLS will be automatically configured using the hosts.\n"
         }
       }
     },
