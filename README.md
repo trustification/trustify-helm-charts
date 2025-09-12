@@ -148,6 +148,123 @@ And then, modify any of the previous `helm` commands to use:
 helm […] --devel trustify/<chart> […]
 ```
 
+## Ingress Configuration
+
+The Trustify Helm chart supports flexible ingress configuration with multiple hostnames and automatic TLS setup.
+
+### Default Behavior
+
+By default, the chart creates an ingress with a single hostname using the pattern `{service-name}{appDomain}`:
+
+```yaml
+# Default configuration
+appDomain: .example.com
+# Results in hostname: server.example.com
+```
+
+### Multiple Hostnames
+
+You can configure multiple hostnames for the same service:
+
+```yaml
+ingress:
+  hosts:
+    - "api.trustify.com"
+    - "api-staging.trustify.com"
+    - "api-dev.trustify.com"
+```
+
+### Automatic TLS Configuration
+
+When you specify hostnames, TLS is automatically configured using the same hosts:
+
+```yaml
+ingress:
+  hosts:
+    - "api.trustify.com"
+    - "api-staging.trustify.com"
+# Automatically generates TLS with secret name: server-tls
+```
+
+### Custom TLS Configuration
+
+For advanced scenarios, you can provide explicit TLS configuration:
+
+```yaml
+ingress:
+  hosts:
+    - "api.trustify.com"
+    - "api-staging.trustify.com"
+  tls:
+    - hosts:
+        - "api.trustify.com"
+        - "api-staging.trustify.com"
+      secretName: "custom-tls"
+```
+
+### Multiple TLS Blocks
+
+You can configure different TLS secrets for different host groups:
+
+```yaml
+ingress:
+  hosts:
+    - "api.trustify.com"
+    - "api-staging.trustify.com"
+    - "api-dev.trustify.com"
+  tls:
+    - hosts:
+        - "api.trustify.com"
+        - "api-staging.trustify.com"
+      secretName: "prod-tls"
+    - hosts:
+        - "api-dev.trustify.com"
+      secretName: "dev-tls"
+```
+
+### Module-level Overrides
+
+You can override global ingress settings at the module level:
+
+```yaml
+ingress:
+  hosts:
+    - "default.example.com"
+modules:
+  server:
+    ingress:
+      hosts:
+        - "api.trustify.com"
+        - "api-staging.trustify.com"
+```
+
+### Ingress Class and Annotations
+
+Configure ingress class and additional annotations:
+
+```yaml
+ingress:
+  className: "nginx"
+  additionalAnnotations:
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+```
+
+### Disable Ingress
+
+You can disable ingress creation globally or per module:
+
+```yaml
+# Disable globally
+ingress:
+  enabled: false
+
+# Disable per module
+modules:
+  server:
+    enabled: false
+```
+
 ## Initial set of importers
 
 You can create an initial set of importers by adding the values file `values-importers.yaml`.
